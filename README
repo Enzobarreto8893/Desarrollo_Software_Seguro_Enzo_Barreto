@@ -1,0 +1,22 @@
+# Desarrollo de Software Seguro
+
+## Portafolio de Enzo Barreto :man_student:
+<!-- bienvenida al portafolios y descripcion -->
+Bienvenido a mi portafolio de la materia Desarrollo de Software Seguro. En este portafolio se encuentran los documentos, informes y ejercicios realizados en la materia.
+
+La organización de este portafolio permite distinguir entre los ejercicios, materiales, resumenes y el informe de cada unidad temática.
+
+Para acceder al material que prefiera elija una de las siguientes opciones:
+
+### :card_index_dividers: [**Unidad Temática 1 - Introducción a la Seguridad Informática**](./UT1)
+  - [:open_file_folder: Ejercicios](./UT1/Ejercicios)
+  - [:open_file_folder: Materiales](./UT1/Materiales)
+  - [:open_file_folder: Resumenes](./UT1/Resumenes)
+  - [:page_facing_up: Informe](./UT1/Informe.md)
+
+### :card_index_dividers: [**Unidad Temática 2 - Buenas prácticas y técnicas de programación segura.**](./UT2)
+  - [:open_file_folder: Ejercicios](./UT2/Ejercicios)
+  - [:open_file_folder: Materiales](./UT2/Materiales)
+  - [:open_file_folder: Resumenes](./UT2/Resumenes)
+  - [:page_facing_up: Informe](./UT2/Informe.md)
+
