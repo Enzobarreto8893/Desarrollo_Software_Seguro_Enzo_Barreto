@@ -16,7 +16,7 @@
 
 ## Consigna
 
-> El propósito de este trabajo obligatorio es crear un Write up en formato Markdown 7 que detalle el proceso de implementación y configuración de un ambiente destinado a la prueba de aplicaciones. Este ambiente será empleado en diversas actividades a desarrollar a lo largo del curso.
+> El propósito de este trabajo obligatorio es crear un Write up en formato Markdown 9 que detalle el proceso de implementación y configuración de un ambiente destinado a la prueba de aplicaciones. Este ambiente será empleado en diversas actividades a desarrollar a lo largo del curso.
 > El mismo debe contener por lo menos la siguiente información:
 > * Instalación de una máquina virtual de Kali Linux en VirtualBox o VMware.
 > * Instalación (si es necesario) de un proxy de interceptació (ZAP o BURP).
@@ -87,15 +87,14 @@ Burp Suite es una herramienta para realizar en análisis de seguridad de aplicac
 
 La distribución de Kali ya cuenta con Burp Suite instalado, por lo que no fue necesario instalarlo. Para ejecutarlo, se debe abrir una terminal y ejecutar el comando `burpsuite`.
 
-<img src="https://github.com/jumpert/DesarrolloSoftwareSeguro/assets/88668277/24421b93-9645-475e-90ba-dd9ea8285135" alt="BurpSuite en terminal" width=400 height=auto>
-<img src="https://github.com/jumpert/DesarrolloSoftwareSeguro/assets/88668277/de7b8eb5-51d8-4585-848b-fee4dd5238ce" alt="BurpSuite en menú" width=400 height=auto>
+
+<img src="/Users/enzobarreto/Desktop/UCU/2doSEM25/Desarrollo Seguro/Desarrollo_Software_Seguro_Enzo_Barreto/UT1/imagenes/burp-inicio.png" alt="BurpSuite en menú" width=400 height=auto>
 
 ```bash
 kali@kali:~$ burpsuite
 ``` 
 O simplemente buscar la aplicación en el menú de aplicaciones.
 
-<img src="https://github.com/jumpert/DesarrolloSoftwareSeguro/assets/88668277/e23c1a16-3328-4edf-bbb5-1653738c04c1" alt="Inicialización de Burp Suite Studio" width=700 height=auto>
 
 ### Configuración de TLS en Burp
 
@@ -103,29 +102,29 @@ Para poder interceptar el tráfico HTTPS, se debe instalar el certificado de Bur
 
 Para interceptar el tráfico desde Burp vamos a la pestaña `Proxy` y seleccionamos la opción `Intercept is on`.
 
-<img src="https://github.com/jumpert/DesarrolloSoftwareSeguro/assets/88668277/c2cd9f98-a550-42bd-9401-875f536acba3" alt="Interceptor on" width=400 height=auto>
+
 
 Desde el navegador de Firefox, abrimos la pestaña `Settings` y buscamos la opción `Proxy`.
 
-<img src="https://github.com/jumpert/DesarrolloSoftwareSeguro/assets/88668277/4eb2bf3d-dfde-4b91-8365-2ce043809da0" alt="Proxy http en 127.0.0.1:8080" width=auto height=auto>
+<img src="/Users/enzobarreto/Desktop/UCU/2doSEM25/Desarrollo Seguro/Desarrollo_Software_Seguro_Enzo_Barreto/UT1/imagenes/cargar-proxy-manual-para-burp.png" alt="Proxy http en 127.0.0.1:8080" width=auto height=auto>
 
 Con el proxy configurado, abrimos la URL `http://burp` y descargamos el certificado CA de Burp.
 
-<img src="https://github.com/jumpert/DesarrolloSoftwareSeguro/assets/88668277/cb46ee0c-3dec-4c57-acc8-caf6a5a5bce7" alt="Descarga de certificados" width=auto height=auto>
+<img src="/Users/enzobarreto/Desktop/UCU/2doSEM25/Desarrollo Seguro/Desarrollo_Software_Seguro_Enzo_Barreto/UT1/imagenes/pagina-burpsuite.png" alt="Descarga de certificados" width=auto height=auto>
 
 Estos certificados se utilizan para autenticar la identidad de entidades en línea, como sitios web, y garantizar la seguridad de las comunicaciones cifradas mediante tecnologías como SSL/TLS. La CA verifica la identidad de la entidad solicitante y firma digitalmente el certificado, lo que garantiza la integridad y autenticidad de la información.
 
 Para configurar el certificado en Firefox, se debe ir a la pestaña `Settings` y  desde la pestaña de `Privacy & Security` se debe seleccionar la opción `View Certificates`.
 
-<img src="https://github.com/jumpert/DesarrolloSoftwareSeguro/assets/88668277/186d3724-b939-4ce3-8078-b71ec49d559e" alt="Acceso a Certificados" width=auto height=auto>
+<img src="/Users/enzobarreto/Desktop/UCU/2doSEM25/Desarrollo Seguro/Desarrollo_Software_Seguro_Enzo_Barreto/UT1/imagenes/import-CA-firefox.png" alt="Acceso a Certificados" width=auto height=auto>
 
 Una vez que se abre la ventana de certificados, se debe seleccionar la pestaña `Authorities` y se debe importar el certificado de Burp que habíamos descargado anteriormente. Y se debe marcar la opción `Trust this CA to identify websites` y se debe presionar el botón `OK`.
 
-<img src="https://github.com/jumpert/DesarrolloSoftwareSeguro/assets/88668277/a9dd7bf6-4209-4e4f-b082-8d40aa32dd36" alt="Importar certificados" width=auto height=auto>
+<img src="/Users/enzobarreto/Desktop/UCU/2doSEM25/Desarrollo Seguro/Desarrollo_Software_Seguro_Enzo_Barreto/UT1/imagenes/creer-en-certificado-firefox.png" alt="Importar certificados" width=auto height=auto>
 
 Ahora que ya tenemos configurado el certificado de Burp en Firefox, podemos acceder a la URL que deseemos y ver el tráfico que se genera en Burp. Recordar que para que se pueda interceptar el tráfico, se debe tener activada la opción `Intercept is on` en Burp, en este caso aparecerá un cuadro de dialogo en el cual se debe presionar el botón `Forward` para que se pueda visualizar el tráfico en Burp.
 
-<img src="https://github.com/jumpert/DesarrolloSoftwareSeguro/assets/88668277/1a07ee10-7ccc-4c7d-b242-bc314951d043" alt="Probar burp" width=auto height=auto>
+<img src="/Users/enzobarreto/Desktop/UCU/2doSEM25/Desarrollo Seguro/Desarrollo_Software_Seguro_Enzo_Barreto/UT1/imagenes/historial-proxy-III.png" alt="Probar burp" width=auto height=auto>
 <br/>
 
 ---
@@ -150,7 +149,7 @@ Una vez finalizada la instalación, se debe realizar la siguiente configuración
 ```bash
 sudo systemctl enable docker --now
 ```
-<img src="https://github.com/jumpert/DesarrolloSoftwareSeguro/assets/88668277/9b8a25f2-f2ad-41e3-a39f-5936bb3d0360" alt="Docker" width=auto height=auto>
+<img src="/Users/enzobarreto/Desktop/UCU/2doSEM25/Desarrollo Seguro/Desarrollo_Software_Seguro_Enzo_Barreto/UT1/imagenes/docker-status.png" alt="Docker" width=auto height=auto>
 
 `systemctl` es un comando que permite controlar el sistema init de Linux.
 
@@ -166,7 +165,7 @@ Como forma de comprobar que la instalación se realizó correctamente, se debe e
 docker version
 ```
 
-<img src="https://github.com/jumpert/DesarrolloSoftwareSeguro/assets/88668277/286f9f95-4bc2-48e7-8f73-55a65732410d" alt="Ejecución de 'docker version'" width=auto height=auto>
+<img src="/Users/enzobarreto/Desktop/UCU/2doSEM25/Desarrollo Seguro/Desarrollo_Software_Seguro_Enzo_Barreto/UT1/imagenes/Captura de pantalla 2025-08-25 a la(s) 11.13.07 p. m..png" alt="Ejecución de 'docker version'" width=auto height=auto>
 
 Por último para evitar tener que escribir `sudo` cada vez que se ejecuta un comando de Docker, se debe agregar el usuario al grupo `docker` con el siguiente comando:
 
@@ -209,7 +208,7 @@ En términos generales el ejecutar este comando permite validar la existencia de
 
 Es necesario abrir el Firefox e ingresar a la URL `http://localhost:3000` para comprobar que el contenedor se encuentra en ejecución. Esto nos debería mostrar la siguiente pantalla:
 
-<img src="https://github.com/jumpert/DesarrolloSoftwareSeguro/assets/88668277/670c10ea-e1f1-429d-b645-c19f0ace0193" alt="Imagen de Juice Shop en localhost:3000" width=auto height=auto>
+<img src="/Users/enzobarreto/Desktop/UCU/2doSEM25/Desarrollo Seguro/Desarrollo_Software_Seguro_Enzo_Barreto/UT1/imagenes/Juice-corriendo .png" alt="Imagen de Juice Shop en localhost:3000" width=auto height=auto>
 
 Para comprobar que el contenedor se encuentra en ejecución, se debe abrir una terminal y ejecutar el siguiente comando:
 
@@ -219,7 +218,7 @@ docker ps
 
 `ps` es un comando que permite listar los contenedores que se encuentran en ejecución.
 
-<img src="https://github.com/jumpert/DesarrolloSoftwareSeguro/assets/88668277/07f6ca31-393c-4d0d-92a0-5356efbb413e" alt="Ejecución de 'docker ps'" width=auto height=auto>
+
 <br/>
 
 ### Prueba de la visualización del tráfico en Burp
@@ -228,13 +227,13 @@ Una buena forma de evitar estar configurando el proxy periódicamente es instala
 
 A continuación se observan los pasos para la configuración de esta extensión:
 1. Una vez realizada encontrada la dirección de mozilla para descargar la extensión aparecerá la opción de `Agregar a Firefox`.
-<img src="https://github.com/jumpert/DesarrolloSoftwareSeguro/assets/88668277/2b4a132d-9bca-43e6-a38c-f32eb11a9507" alt="Agregar Foxyproxy" width=auto height=auto>
+<img src="/Users/enzobarreto/Desktop/UCU/2doSEM25/Desarrollo Seguro/Desarrollo_Software_Seguro_Enzo_Barreto/UT1/imagenes/foxyproxy.png" alt="Agregar Foxyproxy" width=auto height=auto>
 
 2. Se instala la extensión y nos redirige al menú de configuración.
-<img src="https://github.com/jumpert/DesarrolloSoftwareSeguro/assets/88668277/b52bff8b-0cd5-4524-ac3f-7c96c6aa1e3d" alt="Extensión" width=500 height=auto>
+<img src="h/Users/enzobarreto/Desktop/UCU/2doSEM25/Desarrollo Seguro/Desarrollo_Software_Seguro_Enzo_Barreto/UT1/imagenes/opcion-foxyproxy.png" alt="Extensión" width=500 height=auto>
 
 3. El siguiente paso es clickear el botón `añadir` (add), para crear ua nueva configuración.
-<img src="https://github.com/jumpert/DesarrolloSoftwareSeguro/assets/88668277/b9b67ac0-4189-4151-86f2-b35e94e6ecc3" alt="Agregar configuración" width=400>
+<img src="/Users/enzobarreto/Desktop/UCU/2doSEM25/Desarrollo Seguro/Desarrollo_Software_Seguro_Enzo_Barreto/UT1/imagenes/agregar-foxyproxy.png" alt="Agregar configuración" width=400>
 
 4. A continuación se realizaran los pasos de configuración del proxy.
 * 1- Colocar un nombre a la configuración, a forma de poder distinguir entre diferentes configuraciones.
@@ -242,22 +241,22 @@ A continuación se observan los pasos para la configuración de esta extensión:
 * 3- Agregar el `Puerto` escucha.
 * 4- `Guardar` la configuración.
 
-<img src="https://github.com/jumpert/DesarrolloSoftwareSeguro/assets/88668277/3d3f0848-bfbe-43f2-a5cf-ed5252e0c5b2" alt="Pasos de configuración">
+<img src="/Users/enzobarreto/Desktop/UCU/2doSEM25/Desarrollo Seguro/Desarrollo_Software_Seguro_Enzo_Barreto/UT1/imagenes/guardar-foxyproxy.png" alt="Pasos de configuración">
 
 5. Desde el icono de la extensión seleccionar la configuración que deseamos activar, en nuestro caso `Burp`.
-<img src="https://github.com/jumpert/DesarrolloSoftwareSeguro/assets/88668277/e9be4da4-ce44-421b-8c3e-687499432b9b" alt="Activar la configuración en la extensión">
+<img src="h/Users/enzobarreto/Desktop/UCU/2doSEM25/Desarrollo Seguro/Desarrollo_Software_Seguro_Enzo_Barreto/UT1/imagenes/ok-foxyproxy.png" alt="Activar la configuración en la extensión">
 <br/>
 
 Ahora que ya tenemos el `Foxyproxy` configurado, lo siguiente es ir al Burp Suite y habilitar la opción en la pestaña `PROXY` llamada _Interceptar_ (esta debería quedar en modo ON).
 
 Desde una nueva pestaña del navegador, colocamos en la ruta de acceso el URL `http://localhost:3000` que es donde tenemos corriendo nuestra imagen de Docker, una vez listo pulsamos `Enter` y el BurpSuite comenzará a capturar el tráfico.
 
-<img src="https://github.com/jumpert/DesarrolloSoftwareSeguro/assets/88668277/212a33e8-240e-4b7e-8f95-5c5ed49724b9" alt="Intercepción de data">
+<img src="/Users/enzobarreto/Desktop/UCU/2doSEM25/Desarrollo Seguro/Desarrollo_Software_Seguro_Enzo_Barreto/UT1/imagenes/historial-proxy-III.png" alt="Intercepción de data">
 
 Como se puede apreciar en la imagen, el método `GET` llama al **HTTP/1.1**, que se encuentra en el `host` _localhost:3000_. Para continuar cargando la página debemos presionar el botón `Forward` del BurpSuite.
 
 Ahí se comenzará a cargar los recursos de la página, en cada `Forward` se procederá a descargar otro recurso. 
-<img src="https://github.com/jumpert/DesarrolloSoftwareSeguro/assets/88668277/26f2ec99-794c-4d81-8c7a-8e7942e42f1f" alt="Siguiente recurso">
+<img src="/Users/enzobarreto/Desktop/UCU/2doSEM25/Desarrollo Seguro/Desarrollo_Software_Seguro_Enzo_Barreto/UT1/imagenes/historial-proxy.png" alt="Siguiente recurso">
 
 Como se puede apreciar se comienza a descargar un nuevo recurso, este se puede ver en `GET`.
 <br/>
